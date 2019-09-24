@@ -18,6 +18,10 @@ public class Temperatura extends AppCompatActivity {
     TextView resultado = null;
     Spinner spincl=null;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -26,6 +30,7 @@ public class Temperatura extends AppCompatActivity {
         quantidade = (EditText) findViewById(R.id.quant);
         resultado = (TextView) findViewById(R.id.Resultado);
         spincl = (Spinner) findViewById(R.id.spinla);
+
 
         String[]op={"Selecione uma opção","ºC para ºF","ºF para ºC"};
 
@@ -51,16 +56,26 @@ public class Temperatura extends AppCompatActivity {
                             break;
 
                         case 1:
-                            res=1.8 * c + 32;
+                            res=celsiusParaFehreint(c);
                             break;
 
                         case 2:
-                            res = (c - 32) / 1.8;
+                            res=fahrentParaCelsius(c);
                             break;
                     }
                     resultado.setText(res.toString());
                 }
             }
         });
+    }
+
+    public double celsiusParaFehreint(double valor){
+        return 1.8 * valor + 32;
+
+    }
+
+    public double fahrentParaCelsius(double valor){
+        return (valor - 32) / 1.8;
+
     }
 }
